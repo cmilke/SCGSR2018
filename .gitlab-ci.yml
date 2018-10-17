@@ -1,0 +1,47 @@
+# Credit-/Thanks:
+# https://github.com/aufenthaltsraum/stuff/wiki/Using-GitLab-CI-for-Building-LaTeX
+
+image: ablu/ubuntu-texlive-full
+
+variables:
+ JOB_DIR_ABS: "${CI_PROJECT_DIR}/" # CI_PROJECT_DIR is set by Runner
+
+before_script:
+ - echo "Start before script"
+ - echo "CI_PROJECT_NAME=${CI_PROJECT_NAME}"
+ - echo "JOB_DIR_ABS=${JOB_DIR_ABS}"
+ - pwd
+ # Install ssh-agent if not already installed, it is required by Docker.
+ # (change apt-get to yum if you use a CentOS-based image)
+ - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+
+ # Run ssh-agent (inside the build environment)
+ - eval $(ssh-agent -s)
+
+ # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+ #- ssh-add <(echo "$SSH_PRIVATE_KEY")
+ #- mkdir -p ~/.ssh
+
+ # For Docker builds disable host key checking. Be aware that by adding that
+ # you are suspectible to man-in-the-middle attacks.
+ #- echo -e "Host svn.cern.ch lxplus.cern.ch gitlab.cern.ch\n\tUser ${CERN_USER}\n\tStrictHostKeyChecking no\n\tGSSAPIAuthentication yes\n\tGSSAPIDelegateCredentials yes\n\tProtocol 2\n\tForwardX11 no\n\tIdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
+ #
+ # Install additional libraries
+
+stages:
+ - build_pdf
+
+build_pdf:
+    stage: build_pdf
+    script:
+    - set -e # exit on fail
+    - echo -e "\n###############################\n###~Let's build ${CI_PROJECT_NAME}!~###\n###############################\n"
+    - pwd
+    - ls -lha
+    - make
+    artifacts:
+        paths:
+            - ${JOB_DIR_ABS}/proposal.pdf
+        name: "${JOB_DIR}_${CI_JOB_STAGE}"
+        expire_in: 72h
+
