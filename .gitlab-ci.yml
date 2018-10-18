@@ -41,7 +41,7 @@ build_pdf:
     - make
     artifacts:
         paths:
-            - ${JOB_DIR_ABS}/proposal.pdf
+            - ${JOB_DIR_ABS}/project.pdf
         name: "${JOB_DIR}_${CI_JOB_STAGE}"
         expire_in: 72h
 
