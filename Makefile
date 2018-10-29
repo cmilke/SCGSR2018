@@ -17,6 +17,10 @@ final:
 	$(MAKE) text
 	$(MAKE) clean
 
+cv: cv.tex
+	latexmk -$(LATEX) -logfilewarnings -halt-on-error cv
+	
+
 clean:
 	rm -f *.aux *.log *.bbl *.blg *.brf *.cb *.ind *.idx *.ilg  \
 		  *.fls *.fdb_latexmk \
