@@ -10,16 +10,17 @@ default: text
 text:
 	latexmk -$(LATEX) -logfilewarnings -halt-on-error $(BASENAME)
 
+cv: cv.tex
+	latexmk -$(LATEX) -logfilewarnings -halt-on-error cv
+
 final:
 	if [ -f *.aux ]; then \
 		$(MAKE) clean; \
 	fi
 	$(MAKE) text
+	$(MAKE) cv
 	$(MAKE) clean
 
-cv: cv.tex
-	latexmk -$(LATEX) -logfilewarnings -halt-on-error cv
-	
 
 clean:
 	rm -f *.aux *.log *.bbl *.blg *.brf *.cb *.ind *.idx *.ilg  \
