@@ -39,9 +39,11 @@ build_pdf:
     - pwd
     - ls -lha
     - make
+    - make cv
     artifacts:
         paths:
             - ${JOB_DIR_ABS}/project.pdf
+            - ${JOB_DIR_ABS}/cv.pdf
         name: "${JOB_DIR}_${CI_JOB_STAGE}"
         expire_in: 72h
 
