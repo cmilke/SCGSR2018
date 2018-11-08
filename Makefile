@@ -5,20 +5,19 @@ DVIPS    = dvips
 
 BASENAME = project
 
-default: text
+all: text cv.pdf proposal.pdf
 
 text:
 	latexmk -$(LATEX) -logfilewarnings -halt-on-error $(BASENAME)
 
-cv: cv.tex
-	latexmk -$(LATEX) -logfilewarnings -halt-on-error cv
+%.pdf : %.tex
+	latexmk -$(LATEX) -logfilewarnings -halt-on-error $*
 
 final:
 	if [ -f *.aux ]; then \
 		$(MAKE) clean; \
 	fi
-	$(MAKE) text
-	$(MAKE) cv
+	$(MAKE) all
 	$(MAKE) clean
 
 
