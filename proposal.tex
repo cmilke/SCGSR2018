@@ -1,7 +1,6 @@
 \documentclass[paper=a4,fontsize=12pt]{article}
 							
 \usepackage{geometry}
-	\textheight=700px
 \usepackage{url}
 \usepackage{enumitem}
 \usepackage{hyperref}
@@ -25,23 +24,29 @@
 
 
 
-%    This is why VBF is hard
-%        two jets produced by key event, but many more present in detector. Need to identify correct jet pair
-%        final state radiation produced by event needs to be tagged, but can end up in quark jet
-%    Use directed machine learning technique to solve these problems
-%        Instead of training nn to identify vbf generically, train it to identify key aspects of vbf separately 
+    %This is why VBF is hard
+        %two jets produced by key event, but many more present in detector. Need to identify correct jet pair
+    %Use directed machine learning technique to solve these problems
+        %Instead of training nn to identify vbf generically, train it to identify key aspects of vbf separately 
 \section*{Vector Boson Fusion and Machine Learning}
-    The VBF process is a particularly challenging one to identify. The primary process needs to be identified by relating two pairs of jets. As these jets can overlap, the task of reconstructing and correctly identifying them is already difficult. The primary process is almost never isolated however, and is in most cases accompanied by a large amount of pileup, which makes the task of finding a VBF process much harder. 
+    The VBF process is a particularly challenging one to identify. The primary process needs to be identified by relating two pairs of jets. As these jets can overlap, the task of reconstructing and correctly identifying them is already difficult. The primary process is almost never isolated however, and is in most cases accompanied by a large amount of pileup, which makes the task of finding a VBF process much harder. While techiniques to identify VBF events exist, they are not as efficient as they could be, and cannot be easily extended to include new information about the process. However, such a complex pattern is exactly what machine learning techniques are ideal for. 
 
 
-\section*{HGTD is neat}
-    here's how it can help with VBF 
-    but might be tricky to use.
-    Best way to handle it may be ML,
-    hence why it's perfect for use with VBF NN. 
+    %here's how it can help with VBF 
+    %but might be tricky to use.
+    %Best way to handle it may be ML,
+    %hence why it's perfect for use with VBF NN. 
+\section*{High Granularity Timing Detector}
+    The High Granularity Timing Detector (HGTD) is a module planned for installation in ATLAS during the Phase-II upgrade. Its primary purpose is to provide precision (30 ps resolution) timing information of tracks tagged within ATLAS. Such timing information is invaluable in the context of VBF searches within ATLAS, where pileup results in several particles having vertices that partially or completely overlap each other. Currently, it is very difficult to associate seperate tracks with vertices that overlap in space. With the addition of the HGTD though, overlapping vertices will be distinguishable by their time-stamp, making them much easier to associate with the correct track. 
+    
+    One noteable issue with the HGTD is the prescence of material between itself and the tracker. This material causes scattering of particles entering the HGTD, and can lead to difficulty in determining which vertex in the HGTD should go to which vertices in the tracker. Once again, machine learning techniques may provide the best way to resolve this issue. Herein lies the advantage of combining research in VBF tagging with research on the HGTD. Using machine learning techniques to approach VBF tagging is by itself a worthwhile endevour. Using information from the HGTD to assist in VBF tagging would also be greatly valuable. However, since the HGTD could also benefit from a machine learning algorithm, it only seems appropriate to directly include information from the HGTD into the VBF machine learning algorithm. Doing so would make the best possible use of the HGTD's capabilities, and in doing so would significantly bolster the efficiency of the VBF tagging algorithm.
 
 
+    
+    
 \section*{Here's why I should go to slac}
+    SLAC is a center for machine learning research, with many experts in the field
+    slac has powerful computing resources, which would be valuable in these studies
     HGTD and VBF synergize well as projects
     HGTD is great for VBF study, and VBF is a great testing ground for using HGTD.
     SLAC is ideal then b/c they have ALTIROC1, a prototype of HGTD.
