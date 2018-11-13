@@ -7,7 +7,10 @@ BASENAME = project
 
 all: project.pdf cv.pdf proposal_abstract.pdf relevance.pdf thesis_abstract.pdf training.pdf
 
-%.pdf : %.tex
+project.pdf: project.tex project.bib
+	latexmk -$(LATEX) -logfilewarnings -halt-on-error $*
+
+%.pdf: %.tex
 	latexmk -$(LATEX) -logfilewarnings -halt-on-error $*
 
 final:
