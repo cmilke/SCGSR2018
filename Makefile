@@ -5,10 +5,7 @@ DVIPS    = dvips
 
 BASENAME = project
 
-all: text cv.pdf proposal_abstract.pdf proposal.pdf relevance.pdf thesis_abstract.pdf training.pdf
-
-text:
-	latexmk -$(LATEX) -logfilewarnings -halt-on-error $(BASENAME)
+all: project.pdf cv.pdf proposal_abstract.pdf relevance.pdf thesis_abstract.pdf training.pdf
 
 %.pdf : %.tex
 	latexmk -$(LATEX) -logfilewarnings -halt-on-error $*
