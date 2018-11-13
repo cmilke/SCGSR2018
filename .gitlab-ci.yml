@@ -39,7 +39,6 @@ build_pdf:
     - pwd
     - ls -lha
     - make
-    - make cv
     artifacts:
         paths:
             - ${JOB_DIR_ABS}/project.pdf
