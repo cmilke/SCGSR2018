@@ -43,6 +43,10 @@ build_pdf:
         paths:
             - ${JOB_DIR_ABS}/project.pdf
             - ${JOB_DIR_ABS}/cv.pdf
+            - ${JOB_DIR_ABS}/training.pdf
+            - ${JOB_DIR_ABS}/relevance.pdf
+            - ${JOB_DIR_ABS}/proposal_abstract.pdf
+            - ${JOB_DIR_ABS}/thesis_abstract.pdf
         name: "${JOB_DIR}_${CI_JOB_STAGE}"
         expire_in: 72h
 
